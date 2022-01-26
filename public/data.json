@@ -1,0 +1,44 @@
+{
+  "coord": {
+      "lon": 95.1333,
+      "lat": 22.1167
+  },
+  "weather": [
+      {
+          "id": 800,
+          "main": "Clear",
+          "description": "clear sky",
+          "icon": "01d"
+      }
+  ],
+  "base": "stations",
+  "main": {
+      "temp": 26.29,
+      "feels_like": 26.29,
+      "temp_min": 26.29,
+      "temp_max": 26.29,
+      "pressure": 1010,
+      "humidity": 44,
+      "sea_level": 1010,
+      "grnd_level": 1000
+  },
+  "visibility": 10000,
+  "wind": {
+      "speed": 0.84,
+      "deg": 348,
+      "gust": 1.28
+  },
+  "clouds": {
+      "all": 9
+  },
+  "dt": 1643095970,
+  "sys": {
+      "country": "MM",
+      "sunrise": 1643069998,
+      "sunset": 1643109788
+  },
+  "timezone": 23400,
+  "id": 1308522,
+  "name": "Monywa",
+  "cod": 200
+}
