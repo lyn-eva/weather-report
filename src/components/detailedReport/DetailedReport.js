@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const day = [
   "Sunday",
@@ -24,10 +24,14 @@ const month = [
   "December",
 ];
 
-function DetailedReport() {
-  const tmc = 15;
-  const [temp, setTemp] = useState(tmc);
+function DetailedReport(props) {
+  const tmc = props.temp;
+  const [temp, setTemp] = useState();
 
+  useEffect(() => {
+    setTemp(props.temp.toFixed() + '°C')
+  }, [props.temp]);
+  
   const date = new Date();
   let dayDate = date.getDate() % 10;
   dayDate =
@@ -35,28 +39,27 @@ function DetailedReport() {
     (dayDate > 3 ? "th" : dayDate === 3 ? "rd" : dayDate === 2 ? "nd" : "st");
 
   const toCelsius = () => {
-    setTemp(tmc);
+    setTemp(tmc+'°C');
   };
   const toFahrenheit = () => {
-    setTemp((tmc * 9) / 5 + 32);
+    setTemp(((tmc * 9) / 5 + 32).toFixed() + '°F');
   };
   const toKelvin = () => {
-    setTemp(tmc + 273.15);
+    setTemp((tmc + 273.15).toFixed() + 'K');
   };
 
   return (
-    <div className="p-[0.02px] text-white">
+    <div className="p-[0.02px] text-white sm:mt-12">
       <header className="flex flex-col w-11/12 mx-auto mt-7 text-center">
         <span>{`${day[date.getDay()]} ${dayDate}, ${
           month[date.getMonth()]
         }`}</span>
-        <span className="text-3xl mt-2">{`${date.getHours()}:${date.getMinutes()}`}</span>
-        <span className="font-light">Monywa</span>
+        <span className="text-3xl mt-2 sm:text-5xl sm:mt-4 sm:mb-2">{`${date.getHours()}:${date.getMinutes()}`}</span>
+        <span className="font-light sm:text-2xl">{props.name}</span>
       </header>
       <div className="text-center my-12">
-        <i className="fas fa-sun fa-10x"></i>
-        <p className="text-6xl font-light mt-10 mb-6">{`${temp}°C`}</p>
-        <div className="text-2xl flex justify-between w-24 mx-auto">
+        <p className="text-6xl font-light mt-10 mb-6 sm:text-8xl">{temp}</p>
+        <div className="text-2xl flex justify-between w-24 mx-auto sm:text-3xl sm:w-32">
           <button onClick={toKelvin}>K</button>
           <button onClick={toFahrenheit}>F</button>
           <button onClick={toCelsius}>C</button>
